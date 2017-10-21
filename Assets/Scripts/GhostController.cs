@@ -86,7 +86,7 @@ public class GhostController : MonoBehaviour {
                 actionFinish = MoveLeftGhost();
                 break;
             case "Jump":
-                JumpGhost();
+                actionFinish = JumpGhost();
                 break;
             case "Attack":
                 actionFinish = AttackGhost();
@@ -99,9 +99,27 @@ public class GhostController : MonoBehaviour {
 
     }
 
-    public void JumpGhost()
+    public bool JumpGhost()
     {
-        transform.Translate(2, 2, 0);
+        if (!_isMoving)
+        {
+            targetPos = transform.position.x + 2;
+            _isMoving = true;
+        }
+        print(targetPos);
+        if (transform.position.x < targetPos)
+        {
+            transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
+            _facingDirection = "right";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "right";
+            _isMoving = false;
+            return true;
+        }
     }
 
 

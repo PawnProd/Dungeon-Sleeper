@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour {
                 }
                 else
                 {
+                    _nbPlayerAction = GenerateActionToPlayer();
                     RandomPhrase();
                     SetLevelState(LevelState.dreaming);
                 }

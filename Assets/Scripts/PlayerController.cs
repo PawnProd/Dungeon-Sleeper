@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour {
 
     public int attackDmg;
 
-    public string facingDirection;
+    private string _facingDirection;
+
+    public GameController gameController;
 
     private bool _isMoving;
 
     private int _health;
+
+    private float _speed = 1;
 
 
     void Start () {
@@ -58,14 +62,14 @@ public class PlayerController : MonoBehaviour {
 
     public void MoveRight()
     {
-        transform.Translate(Vector3.right);
-        facingDirection = "right";
+        transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        _facingDirection = "right";
     }
 
     public void MoveLeft()
     {
         transform.Translate(Vector3.left);
-        facingDirection = "left";
+        _facingDirection = "left";
     }
 
     public void Jump()
@@ -75,20 +79,22 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-        if (facingDirection == "left")
-        {
-
-        }
-
-        //monster.GetComponent<Monster>().pv -= attackDmg;
+        monster.GetComponent<Monster>().pv -= attackDmg;
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Monster")
         {
-            monster = other.gameObject;
-            Attack();
+            if( actionsList[0] == "Attack")
+            {
+                monster = other.gameObject;
+                Attack();
+            }
+            else
+            {
+                monster.GetComponent<WalkingMonster>().Attack();
+            }
         }
     }
 

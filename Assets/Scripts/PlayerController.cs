@@ -124,9 +124,28 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void Jump()
+    public bool Jump()
     {
-        transform.Translate(2,2,0);
+        if (!_isMoving)
+        {
+            targetPos = transform.position.x + 2;
+            transform.Translate(2 * _speed * Time.deltaTime, 2, 0);
+            _isMoving = true;
+        }
+        print(targetPos);
+        if (transform.position.x < targetPos)
+        {
+            transform.Translate(2 * _speed * Time.deltaTime, 0, 0);
+            _facingDirection = "right";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "right";
+            _isMoving = false;
+            return true;
+        }
     }
 
     public bool Attack()

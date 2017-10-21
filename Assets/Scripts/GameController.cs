@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 
     private int _nbPlayerAction;
 
+    private float _timer = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -33,9 +35,26 @@ public class GameController : MonoBehaviour {
         {
             case LevelState.running:
                 print("Running");
-                DoPlayerAction();
+                _timer += Time.deltaTime;
+                if(_timer >= 1)
+                {
+                    print(_player.actionsList.Count);
+                    if(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+                    {
+                        DoPlayerAction();
+                    }
+                    else
+                    {
+                        RandomPhrase();
+                        SetLevelState(LevelState.dreaming);
+                    }
+                    
+                    _timer = 0;
+
+                }
                 break;
             case LevelState.dreaming:
+                print("Dreaming");
                 StartCoroutine(DelaySleeping());
                 break;
         }
@@ -66,27 +85,30 @@ public class GameController : MonoBehaviour {
         _nbPlayerAction = GenerateActionToPlayer();
     }
 
-    // Effectue l'enchainement d'action programmé par le joueur
+    public void RandomPhrase()
+    {
+        string phrase = _player.tiredList[Random.Range(0, _player.tiredList.Count - 1)];
+        _player.SaySomething(phrase);
+    }
+
+    // Effectue la liste d'action des players
     public void DoPlayerAction()
     {
-        while(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+        switch(_player.actionsList[0])
         {
-            if(_player.actionsList[0] == "Right") // Déplacement à droite
-            {
+            case "Right":
                 _player.MoveRight();
-            }
-            else if (_player.actionsList[0] == "Left") // Déplacement à gauche
-            {
+                break;
+            case "Left":
                 _player.MoveLeft();
-            }
-            else if (_player.actionsList[0] == "Jump") // Saut
-            {
+                break;
+            case "Jump":
                 _player.Jump();
-            }
-            // On passe à l'input suivant
-            _player.actionsList.RemoveAt(0);
-            --_nbPlayerAction;
+                break;
         }
+
+        _player.actionsList.RemoveAt(0);
+        --_nbPlayerAction;
     }
 
 }

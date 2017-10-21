@@ -251,8 +251,10 @@ MonoBehaviour:
   actionsList: []
   tiredList: []
   monster: {fileID: 0}
+  ghost: {fileID: 0}
   attackDmg: 0
   gameController: {fileID: 0}
+  isDead: 0
 --- !u!212 &1514340732
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour {
     public List<string> actionsList = new List<string>();
     public List<string> tiredList = new List<string>();
 
-    public GameObject monster;    
+    public GameObject monster;
+    public GameObject ghost;
 
     public int attackDmg;
 
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour {
     public bool isDead = false;
 
     private bool _isMoving;
-    
 
     private int _health = 1;
 
@@ -36,28 +36,35 @@ public class PlayerController : MonoBehaviour {
         switch (GameController._levelState)
         {
             case LevelState.dreaming:
+
+                ghost.SetActive(true);
+
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     print("MoveRight");
                     actionsList.Add("Right");
+                    MoveRight();
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     print("MoveLeft");
                     actionsList.Add("Left");
+                    MoveLeft();
                 }
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     print("Jump");
                     actionsList.Add("Jump");
+                    Jump();
                 }
 
                 if (Input.GetMouseButtonDown(1))
                 {
                     print("Attack");
-                    actionsList.Add("Jump");
+                    actionsList.Add("Attack");
+                    Attack();
                 }
                 break;
         }
@@ -124,7 +131,11 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-        monster.GetComponent<Monster>().pv -= attackDmg;
+        if(!monster)
+        {
+            monster.GetComponent<Monster>().pv -= attackDmg;
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -154,8 +165,10 @@ public class PlayerController : MonoBehaviour {
     {
         print(text);
     }
-                                                  ////////////////////             \\\\\\\\\\\\\\\\\\\
-                                        //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    
+                                                       ////////////////////             \\\\\\\\\\\\\\\\\\\
+                                             //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public int GetHealth()
     {
         return _health;

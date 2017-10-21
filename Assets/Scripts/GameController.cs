@@ -59,6 +59,10 @@ public class GameController : MonoBehaviour {
                 cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -22);
                 StartCoroutine(DelaySleeping());
                 break;
+            case LevelState.transition:
+                print("Transition");
+                StartCoroutine(DelayTransition());
+                break;
         }
 	}
     
@@ -66,6 +70,13 @@ public class GameController : MonoBehaviour {
     IEnumerator DelaySleeping()
     {
         yield return new WaitForSeconds(delaySleeping);
+        SetLevelState(LevelState.transition);
+    }
+
+    // Le temps de sommeil
+    IEnumerator DelayTransition()
+    {
+        yield return new WaitForSeconds(2);
         SetLevelState(LevelState.running);
     }
 
@@ -131,5 +142,6 @@ public class GameController : MonoBehaviour {
 public enum LevelState
 {
     running,
-    dreaming
+    dreaming,
+    transition
 }

@@ -26,7 +26,7 @@ public class GhostController : MonoBehaviour {
             DoPlayerAction();
         }
 
-        if(GameController._levelState == LevelState.running)
+        if(GameController._levelState == LevelState.transition)
         {
             _animator.SetBool("isWalking", false);
         }

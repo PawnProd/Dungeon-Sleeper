@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject monster;
     public GameObject ghost;
 
-    public int attackDmg;
+    public int attackDmg = 1;
 
     private string _facingDirection;
 
@@ -43,28 +43,28 @@ public class PlayerController : MonoBehaviour {
                 {
                     print("MoveRight");
                     actionsList.Add("Right");
-                    MoveRight();
+                    ghost.GetComponent<GhostController>().actionList.Add("Right");
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     print("MoveLeft");
                     actionsList.Add("Left");
-                    MoveLeft();
+                    ghost.GetComponent<GhostController>().actionList.Add("Left");
                 }
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     print("Jump");
                     actionsList.Add("Jump");
-                    Jump();
+                    ghost.GetComponent<GhostController>().actionList.Add("Jump");
                 }
 
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(0))
                 {
                     print("Attack");
                     actionsList.Add("Attack");
-                    Attack();
+                    ghost.GetComponent<GhostController>().actionList.Add("Attack");
                 }
                 break;
         }
@@ -131,26 +131,25 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-        if(!monster)
+        if(monster != null)
         {
-            monster.GetComponent<Monster>().pv -= attackDmg;
+            monster.GetComponent<WalkingMonster>().TakeDamage();
         }
 
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Monster")
-        { 
-            if( actionsList[0] == "Attack")
+        if (other.tag == "Monster")
+        {
+            monster = other.gameObject;
+            if (actionsList[1] == "Attack")
             {
-                monster = other.gameObject;
                 Attack();
             }
             else
             {
                 monster.GetComponent<WalkingMonster>().Attack();
-                print("you died");
             }
         }
     }

@@ -9,10 +9,12 @@ public class GameController : MonoBehaviour {
     public int delaySleeping; // Le temps de dodo
 
     public GameObject playerPrefab;
+    public GameObject ghostPrefab;
 
     public static LevelState _levelState;
 
     private PlayerController _player;
+    private GhostController _ghost;
 
     private int _nbPlayerAction;
 
@@ -24,7 +26,9 @@ public class GameController : MonoBehaviour {
 
         SetupGame();
         _levelState = LevelState.dreaming;
+        _ghost = Instantiate(ghostPrefab).GetComponent<GhostController>();
         _player = Instantiate(playerPrefab).GetComponent<PlayerController>();
+        _player.ghost = _ghost.gameObject;
 
     }
 	

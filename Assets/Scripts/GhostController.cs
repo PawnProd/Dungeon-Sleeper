@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour {
 
+    public List<string> actionList = new List<string>();
+
     private float _speed = 1;
     private float targetPos;
 
@@ -17,9 +19,9 @@ public class GhostController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.D))
+		if(actionList.Count != 0)
         {
-            MoveRightGhost();
+            DoPlayerAction();
         }
 	}
 
@@ -67,6 +69,29 @@ public class GhostController : MonoBehaviour {
             _facingDirection = "left";
             _isMoving = false;
             return true;
+        }
+
+    }
+
+    // Effectue la liste d'action des players
+    public void DoPlayerAction()
+    {
+        bool actionFinish = false;
+        switch (actionList[0])
+        {
+            case "Right":
+                actionFinish = MoveRightGhost();
+                break;
+            case "Left":
+                actionFinish = MoveLeftGhost();
+                break;
+            case "Jump":
+                JumpGhost();
+                break;
+        }
+        if (actionFinish)
+        {
+            actionList.RemoveAt(0);
         }
 
     }

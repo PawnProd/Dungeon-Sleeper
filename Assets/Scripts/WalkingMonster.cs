@@ -31,7 +31,7 @@ public class WalkingMonster : MonoBehaviour, IMonster
 	// Update is called once per frame
 	void Update () {
 
-        Move();
+       // Move();
     }
 
     public void Move()
@@ -81,6 +81,7 @@ public class WalkingMonster : MonoBehaviour, IMonster
         if(_target != null)
         {
             life -= _target.GetComponent<PlayerController>().attackDmg;
+            print("LA VIE "+life);
             if (life <= 0)
             {
                 Destroy(this.gameObject);

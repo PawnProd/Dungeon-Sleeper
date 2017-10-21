@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetMouseButtonDown(1))
                 {
                     print("Attack");
-                    Attack();
+                    actionsList.Add("Jump");
                 }
                 break;
         }
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Jump()
     {
-        transform.Translate(1,2,0);
+        transform.Translate(2,2,0);
     }
 
     public void Attack()
@@ -80,10 +80,6 @@ public class PlayerController : MonoBehaviour {
 
         }
 
-        else
-        {
-
-        }
         //monster.GetComponent<Monster>().pv -= attackDmg;
     }
 
@@ -103,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 
     public void SaySomething(string text)
     {
-        print("I said something!");
+        print(text);
     }
                                                   ////////////////////             \\\\\\\\\\\\\\\\\\\
                                         //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

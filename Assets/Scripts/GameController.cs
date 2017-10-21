@@ -9,12 +9,16 @@ public class GameController : MonoBehaviour {
 
     public int delaySleeping;
 
-    private LevelState _levelState;
+    public static LevelState _levelState;
 
 	// Use this for initialization
 	void Start () {
+
         SetupGame();
-	}
+        _levelState = LevelState.dreaming;
+        print(_levelState);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,7 +29,7 @@ public class GameController : MonoBehaviour {
                 //DO SOMETHING
                 break;
             case LevelState.dreaming:
-                StartCoroutine(DelaySleeping());
+                //StartCoroutine(DelaySleeping());
                 break;
         }
 		

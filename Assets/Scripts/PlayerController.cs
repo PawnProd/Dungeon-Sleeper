@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour {
 
     public GameController gameController;
 
+    public bool isDead = false;
+
     private bool _isMoving;
+    
 
     private int _health = 1;
 
@@ -68,7 +71,11 @@ public class PlayerController : MonoBehaviour {
 
     public bool MoveRight()
     {
-        targetPos = transform.position.x + 1;
+        if (!_isMoving)
+        {
+            targetPos = transform.position.x + 1;
+            _isMoving = true;
+        }
 
         if (transform.position.x < targetPos)
         {
@@ -80,6 +87,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _facingDirection = "right";
+            _isMoving = false;
             return true;
         }
 
@@ -87,7 +95,11 @@ public class PlayerController : MonoBehaviour {
 
     public bool MoveLeft()
     {
-        targetPos = transform.position.x - 1;
+        if (!_isMoving)
+        {
+            targetPos = transform.position.x - 1;
+            _isMoving = true;
+        }
 
         if (transform.position.x > targetPos)
         {
@@ -99,6 +111,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             _facingDirection = "left";
+            _isMoving = false;
             return true;
         }
 
@@ -117,7 +130,7 @@ public class PlayerController : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Monster")
-        {
+        { 
             if( actionsList[0] == "Attack")
             {
                 monster = other.gameObject;
@@ -126,6 +139,7 @@ public class PlayerController : MonoBehaviour {
             else
             {
                 monster.GetComponent<WalkingMonster>().Attack();
+                print("you died");
             }
         }
     }
@@ -133,6 +147,7 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         print("YOU DIED!!");
+        isDead = true;
     }
 
     public void SaySomething(string text)

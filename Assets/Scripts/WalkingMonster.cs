@@ -101,7 +101,7 @@ public class WalkingMonster : MonoBehaviour, IMonster
         monsterObj.transform.position = position;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {

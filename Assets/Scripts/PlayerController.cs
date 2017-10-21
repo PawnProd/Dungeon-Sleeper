@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour {
         switch (GameController._levelState)
         {
             case LevelState.dreaming:
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.D))
                 {
                     print("MoveRight");
                     actionsList.Add("Right");
                 }
 
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     print("MoveLeft");
                     actionsList.Add("Left");
@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour {
 
     public void Death()
     {
-        
+
+    }
+                                                  ////////////////////             \\\\\\\\\\\\\\\\\\\
+                                        //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public int GetHealth()
+    {
+        return health;
     }
 }

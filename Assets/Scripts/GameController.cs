@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject playerPrefab;
     public GameObject ghostPrefab;
+    public GameObject cameraPlayer;
 
     public static LevelState _levelState;
 
@@ -38,7 +39,8 @@ public class GameController : MonoBehaviour {
         {
             case LevelState.running:
                 print(_player.actionsList.Count);
-                if(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+                cameraPlayer.transform.position = new Vector3(_player.transform.position.x, 0, -1);
+                if (_player.actionsList.Count != 0 && _nbPlayerAction != 0)
                 {
                     DoPlayerAction();
                 }
@@ -53,7 +55,7 @@ public class GameController : MonoBehaviour {
                 break;
             case LevelState.dreaming:
                 print("Dreaming");
-
+                cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -1);
                 StartCoroutine(DelaySleeping());
                 break;
         }

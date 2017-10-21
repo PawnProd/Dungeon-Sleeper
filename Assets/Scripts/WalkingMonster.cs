@@ -22,18 +22,10 @@ public class WalkingMonster : MonoBehaviour, IMonster
         life = 1;
         attackDmg = 1;
         type = MonsterType.walking;
-        monsterObj = new GameObject("WalkingMonster", typeof(SpriteRenderer), typeof(Rigidbody2D));
-        monsterObj.tag = "Monster";
-        monsterObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("WalkingMonster/Monster01", typeof(Sprite)) as Sprite;
-        monsterObj.AddComponent<BoxCollider2D>();
+        SetupMonster();
         _moveDirection = "Left";
         _travelDistance = 3;
         _targetPos = monsterObj.transform.position.x - _travelDistance;
-    }
-
-    public GameObject MonsterObj
-    {
-        get { return monsterObj; }
     }
 
 	// Use this for initialization
@@ -71,6 +63,15 @@ public class WalkingMonster : MonoBehaviour, IMonster
                 _targetPos = monsterObj.transform.position.x + _travelDistance;
             }
         }
+    }
+
+    public void SetupMonster()
+    {
+        monsterObj = new GameObject("WalkingMonster", typeof(SpriteRenderer), typeof(Rigidbody2D));
+        monsterObj.tag = "Monster";
+        monsterObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("WalkingMonster/Monster01", typeof(Sprite)) as Sprite;
+        monsterObj.AddComponent<BoxCollider2D>();
+        monsterObj.GetComponent<BoxCollider2D>().size = new Vector2(3, 1);
     }
 
     public void Attack()

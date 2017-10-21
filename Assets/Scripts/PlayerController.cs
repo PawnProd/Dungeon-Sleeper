@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         print("YOU DIED!!");
+        animator.SetBool("isDied", true);
         isDead = true;
     }
 

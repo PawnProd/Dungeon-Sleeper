@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour {
 
     public int randomNbActionMin; // Le nombre d'action minimum que peut effectuer le joueur
     public int randomNbActionMax; // Le nombre d'action maximum que peut effectuer le joueur
-    public int delaySleeping; // Le temps de dodo
+    public float delaySleeping; // Le temps de dodo
 
     public GameObject playerPrefab;
     public GameObject ghostPrefab;
@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
     private GhostController _ghost;
 
     private int _nbPlayerAction;
+    private float _timer = 0;
 
 
 	// Use this for initialization
@@ -59,10 +60,6 @@ public class GameController : MonoBehaviour {
                 cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -22);
                 StartCoroutine(DelaySleeping());
                 break;
-            case LevelState.transition:
-                print("Transition");
-                StartCoroutine(DelayTransition());
-                break;
         }
 	}
     
@@ -70,13 +67,6 @@ public class GameController : MonoBehaviour {
     IEnumerator DelaySleeping()
     {
         yield return new WaitForSeconds(delaySleeping);
-        SetLevelState(LevelState.transition);
-    }
-
-    // Le temps de sommeil
-    IEnumerator DelayTransition()
-    {
-        yield return new WaitForSeconds(2);
         SetLevelState(LevelState.running);
     }
 
@@ -142,6 +132,5 @@ public class GameController : MonoBehaviour {
 public enum LevelState
 {
     running,
-    dreaming,
-    transition
+    dreaming
 }

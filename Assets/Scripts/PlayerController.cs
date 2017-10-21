@@ -129,13 +129,12 @@ public class PlayerController : MonoBehaviour {
         if (!_isMoving)
         {
             targetPos = transform.position.x + 2;
-            transform.Translate(2 * _speed * Time.deltaTime, 2, 0);
             _isMoving = true;
         }
         print(targetPos);
         if (transform.position.x < targetPos)
         {
-            transform.Translate(2 * _speed * Time.deltaTime, 0, 0);
+            transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
             _facingDirection = "right";
             return false;
         }
@@ -159,9 +158,9 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.tag == "Monster")
+        if (other.collider.tag == "Monster")
         {
             monster = other.gameObject;
             if (actionsList[1] == "Attack")

@@ -95,9 +95,9 @@ public class WalkingMonster : MonoBehaviour, IMonster
         transform.position = position;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.tag == "Player")
+        if(other.collider.tag == "Player")
         {
             _target = other.gameObject;
             if(GameController._levelState == LevelState.dreaming)

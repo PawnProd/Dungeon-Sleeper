@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour
 
     public void Attack()
     {
-        player.GetComponent<PlayerController>().health--;
+        player.GetComponent<PlayerController>().SetHealth(1);
     }
     public void MoveDirection()
     {

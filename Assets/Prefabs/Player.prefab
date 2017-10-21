@@ -100,6 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionsList: []
+  textList:
+  - "Je suis fatigu\xE9... Laissez moi dormir encore un peu"
+  - "Je ferai \xE7a plus tard, \xE7a vous d\xE9range pas?"
+  - "On verra \xE7a... *baillement* demain..."
+  - "Je ferais bien un petit som' plut\xF4t"
+  - "Vous avez qu'\xE0 le faire vous m\xEAme!"
   monster: {fileID: 0}
 --- !u!212 &212939934163927836
 SpriteRenderer:

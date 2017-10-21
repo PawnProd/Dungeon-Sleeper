@@ -5,14 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public List<string> actionsList = new List<string>();
+    public List<string> tiredList = new List<string>();
+
+    public GameObject monster;    
+
+    public int attackDmg;
+
+    public string facingDirection;
 
     private bool _isMoving;
 
-    public GameObject monster;
+    private int _health;
 
-    public int health;
 
-	void Start () {
+    void Start () {
 
 	}
 	
@@ -53,6 +59,7 @@ public class PlayerController : MonoBehaviour {
     public void MoveRight()
     {
         transform.Translate(Vector3.right);
+        facingDirection = "right";
     }
 
     public void MoveLeft()
@@ -67,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-        //monster.GetComponent<Monster>().pv--;
+        //monster.GetComponent<Monster>().pv -= attackDmg;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -81,12 +88,20 @@ public class PlayerController : MonoBehaviour {
 
     public void Death()
     {
-
+        print("YOU DIED!!");
     }
                                                   ////////////////////             \\\\\\\\\\\\\\\\\\\
                                         //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public int GetHealth()
     {
-        return health;
+        return _health;
+    }
+
+                                                  ////////////////////             \\\\\\\\\\\\\\\\\\\
+                                        //////////////////////////////   SETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    public void SetHealth(int damage)
+    {
+        _health -= damage;
     }
 }

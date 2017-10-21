@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     private int _health = 1;
 
     private float _speed = 1;
+    private float targetPos;
 
 
     void Start () {
@@ -65,16 +66,42 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    public void MoveRight()
+    public bool MoveRight()
     {
-        transform.Translate(Vector3.right * _speed * Time.deltaTime);
-        _facingDirection = "right";
+        targetPos = transform.position.x + 1;
+
+        if (transform.position.x < targetPos)
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            _facingDirection = "right";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "right";
+            return true;
+        }
+
     }
 
-    public void MoveLeft()
+    public bool MoveLeft()
     {
-        transform.Translate(Vector3.left);
-        _facingDirection = "left";
+        targetPos = transform.position.x - 1;
+
+        if (transform.position.x > targetPos)
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            _facingDirection = "left";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "left";
+            return true;
+        }
+
     }
 
     public void Jump()

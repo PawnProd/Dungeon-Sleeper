@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     private float _speed = 1;
     private float targetPos;
+    private float _delay = 0;
 
 
     void Start () {
@@ -127,37 +128,44 @@ public class PlayerController : MonoBehaviour {
 
     public bool Jump()
     {
-        if (!_isMoving)
+        _delay += Time.deltaTime;
+        print(_delay);
+        if (_delay >= 2)
         {
-            if(_facingDirection == "right")
+            animator.SetBool("isJumping", false);
+            if (!_isMoving)
             {
-                targetPos = transform.position.x + 2;
+                if (_facingDirection == "right")
+                {
+                    targetPos = transform.position.x + 2;
+                }
+                else
+                {
+                    targetPos = transform.position.x - 2;
+                }
+                _isMoving = true;
             }
-            else
+            print(targetPos);
+            if (_facingDirection == "right" && transform.position.x < targetPos)
             {
-                targetPos = transform.position.x - 2;
+                transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
+                return false;
             }
-            _isMoving = true;
-        }
-        print(targetPos);
-        if (_facingDirection == "right" && transform.position.x < targetPos)
-        {
-            transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            return false;
-        }
-        else if(_facingDirection == "left" && transform.position.x > targetPos)
-        {
-            transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            return false;
+            else if (_facingDirection == "left" && transform.position.x > targetPos)
+            {
+                transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
+                return false;
+            }
+
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle"))
+            {
+                _isMoving = false;
+                _delay = 0;
+                return true;
+            }
         }
 
-        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_idle"))
-        {
-            _isMoving = false;
-            return true;
-        }
-
-        return true;
+        return false;
     }
 
     public bool Attack()

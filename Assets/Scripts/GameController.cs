@@ -111,6 +111,8 @@ public class GameController : MonoBehaviour {
                 _player.transform.localScale = new Vector3(-0.25f, 0.25f, 1);
                 break;
             case "Jump":
+                _player.animator.SetBool("isWalking", false);
+                _player.animator.SetBool("isJumping", true);
                 actionFinish = _player.Jump();
                 break;
             case "Attack":

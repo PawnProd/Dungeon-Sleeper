@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public int randomNbActionMin;
-    public int randomNbActionMax;
+    public int randomNbActionMin; // Le nombre d'action minimum que peut effectuer le joueur
+    public int randomNbActionMax; // Le nombre d'action maximum que peut effectuer le joueur
+    public int delaySleeping; // Le temps de dodo
 
-    public int delaySleeping;
+    public GameObject playerPrefab;
 
     public static LevelState _levelState;
+
+    private PlayerController _player;
+
+    private int _nbPlayerAction;
+
 
 	// Use this for initialization
 	void Start () {
 
         SetupGame();
         _levelState = LevelState.dreaming;
-        print(_levelState);
+        _player = Instantiate(playerPrefab).GetComponent<PlayerController>();
 
     }
 	
@@ -26,13 +32,13 @@ public class GameController : MonoBehaviour {
         switch(_levelState) // BOUCLE DE JEU
         {
             case LevelState.running:
-                //DO SOMETHING
+                print("Running");
+                DoPlayerAction();
                 break;
             case LevelState.dreaming:
-                //StartCoroutine(DelaySleeping());
+                StartCoroutine(DelaySleeping());
                 break;
         }
-		
 	}
     
     // Le temps de sommeil
@@ -57,7 +63,30 @@ public class GameController : MonoBehaviour {
     // Setup les différents paramètre de la partie
     public void SetupGame()
     {
-        GenerateActionToPlayer();
+        _nbPlayerAction = GenerateActionToPlayer();
+    }
+
+    // Effectue l'enchainement d'action programmé par le joueur
+    public void DoPlayerAction()
+    {
+        while(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+        {
+            if(_player.actionsList[0] == "Right") // Déplacement à droite
+            {
+                _player.MoveRight();
+            }
+            else if (_player.actionsList[0] == "Left") // Déplacement à gauche
+            {
+                _player.MoveLeft();
+            }
+            else if (_player.actionsList[0] == "Jump") // Saut
+            {
+                _player.Jump();
+            }
+            // On passe à l'input suivant
+            _player.actionsList.RemoveAt(0);
+            --_nbPlayerAction;
+        }
     }
 
 }

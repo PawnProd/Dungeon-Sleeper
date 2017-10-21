@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour {
                 }
                 else
                 {
-                    _player.animator.SetBool("isAttack", false);
                     _player.animator.SetBool("isWalking", false);
+                    _player.animator.SetBool("isAttack", false);
                     _nbPlayerAction = GenerateActionToPlayer();
                     RandomPhrase();
                     SetLevelState(LevelState.dreaming);
@@ -108,14 +108,14 @@ public class GameController : MonoBehaviour {
                 actionFinish = _player.Jump();
                 break;
             case "Attack":
+                _player.animator.SetBool("isWalking", false);
                 _player.animator.SetBool("isAttack", true);
-                actionFinish = _player.Attack();
+                actionFinish = _player.Attack(); 
                 break;
         }
         if(actionFinish)
         {
-          //  _player.animator.SetBool("isWalking", false);
-           // _player.animator.SetBool("isAttack", false);
+            
             _player.actionsList.RemoveAt(0);
             --_nbPlayerAction;
         }

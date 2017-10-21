@@ -155,8 +155,12 @@ public class PlayerController : MonoBehaviour {
         {
             monster.GetComponent<WalkingMonster>().TakeDamage();
         }
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Finish_Fight"))
+        {
+            return true;
+        }
 
-        return true;
+        return false;
 
     }
 

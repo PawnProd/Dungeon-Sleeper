@@ -285,6 +285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c943a7d5d1d2d43b95c8d3c9b29fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wMonsterPrefab: {fileID: 1118934238129278, guid: 63452626e899ec84facd0633f70a398a,
+    type: 2}
 --- !u!4 &731518183
 Transform:
   m_ObjectHideFlags: 0

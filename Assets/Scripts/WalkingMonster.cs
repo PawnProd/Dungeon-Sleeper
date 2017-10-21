@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WalkingMonster : MonoBehaviour, IMonster
 {
-    public GameObject monsterObj;
     public int life;
     public int attackDmg;
     public MonsterType type;
@@ -17,61 +16,56 @@ public class WalkingMonster : MonoBehaviour, IMonster
 
     private GameObject _target;
 
-    public WalkingMonster()
-    {
+
+	// Use this for initialization
+	void Start () {
         life = 1;
         attackDmg = 1;
         type = MonsterType.walking;
         SetupMonster();
         _moveDirection = "Left";
         _travelDistance = 3;
-        _targetPos = monsterObj.transform.position.x - _travelDistance;
+        _targetPos = transform.position.x - _travelDistance;
     }
-
-	// Use this for initialization
-	void Start () {
-        
-	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        Move();
     }
 
     public void Move()
     {
         if (_moveDirection == "Right")
         {       
-            if (monsterObj.transform.position.x < _targetPos)
+            if (transform.position.x < _targetPos)
             {
-                monsterObj.transform.position += Vector3.right * _speed * Time.deltaTime;
+                transform.position += Vector3.right * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Left";
-                _targetPos = monsterObj.transform.position.x - _travelDistance;
+                _targetPos = transform.position.x - _travelDistance;
             }
         }
         else
         {
-            if (monsterObj.transform.position.x > _targetPos)
+            if (transform.position.x > _targetPos)
             {
-                monsterObj.transform.position += Vector3.left * _speed * Time.deltaTime;
+                transform.position += Vector3.left * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Right";
-                _targetPos = monsterObj.transform.position.x + _travelDistance;
+                _targetPos = transform.position.x + _travelDistance;
             }
         }
     }
 
     public void SetupMonster()
     {
-        monsterObj = new GameObject("WalkingMonster", typeof(SpriteRenderer), typeof(Rigidbody2D));
-        monsterObj.tag = "Monster";
-        monsterObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("WalkingMonster/Monster01", typeof(Sprite)) as Sprite;
-        monsterObj.AddComponent<BoxCollider2D>();
-        monsterObj.GetComponent<BoxCollider2D>().size = new Vector2(3, 1);
+        gameObject.tag = "Monster";
+        GetComponent<SpriteRenderer>().sprite = Resources.Load("WalkingMonster/Monster01", typeof(Sprite)) as Sprite;
     }
 
     public void Attack()
@@ -89,8 +83,7 @@ public class WalkingMonster : MonoBehaviour, IMonster
             life -= _target.GetComponent<PlayerController>().attackDmg;
             if (life <= 0)
             {
-                Destroy(monsterObj);
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
 
@@ -98,7 +91,7 @@ public class WalkingMonster : MonoBehaviour, IMonster
 
     public void SetSpawnPosition(Vector2 position)
     {
-        monsterObj.transform.position = position;
+        transform.position = position;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

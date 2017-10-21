@@ -35,22 +35,15 @@ public class GameController : MonoBehaviour {
         {
             case LevelState.running:
                 print("Running");
-                _timer += Time.deltaTime;
-                if(_timer >= 1)
+                print(_player.actionsList.Count);
+                if(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
                 {
-                    print(_player.actionsList.Count);
-                    if(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
-                    {
-                        DoPlayerAction();
-                    }
-                    else
-                    {
-                        RandomPhrase();
-                        SetLevelState(LevelState.dreaming);
-                    }
-                    
-                    _timer = 0;
-
+                    DoPlayerAction();
+                }
+                else
+                {
+                    RandomPhrase();
+                    SetLevelState(LevelState.dreaming);
                 }
                 break;
             case LevelState.dreaming:
@@ -94,21 +87,25 @@ public class GameController : MonoBehaviour {
     // Effectue la liste d'action des players
     public void DoPlayerAction()
     {
+        bool actionFinish = false;
         switch(_player.actionsList[0])
         {
             case "Right":
-                _player.MoveRight();
+                actionFinish = _player.MoveRight();
                 break;
             case "Left":
-                _player.MoveLeft();
+                actionFinish = _player.MoveLeft();
                 break;
             case "Jump":
                 _player.Jump();
                 break;
         }
+        if(actionFinish)
+        {
+            _player.actionsList.RemoveAt(0);
+            --_nbPlayerAction;
+        }
 
-        _player.actionsList.RemoveAt(0);
-        --_nbPlayerAction;
     }
 
 }

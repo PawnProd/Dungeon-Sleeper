@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour {
         if (other.collider.tag == "Monster")
         {
             monster = other.gameObject;
-            if (actionsList[1] == "Attack")
+            if (actionsList.Count < 2 && actionsList[1] == "Attack")
             {
                 Attack();
             }

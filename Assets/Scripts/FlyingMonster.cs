@@ -78,4 +78,9 @@ public class FlyingMonster : MonoBehaviour, IMonster {
             Destroy(this);
         }
     }
+
+    public void SetSpawnPosition(Vector2 position)
+    {
+        monsterObj.transform.position = position;
+    }
 }

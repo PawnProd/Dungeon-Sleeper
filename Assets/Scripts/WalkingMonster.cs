@@ -10,7 +10,11 @@ public class WalkingMonster : MonoBehaviour, IMonster
     public MonsterType type;
 
     private string _moveDirection;
+
     private float _travelDistance;
+    private float _targetPos;
+    private float _speed = 1f;
+
     private GameObject _target;
 
     public WalkingMonster()
@@ -24,46 +28,47 @@ public class WalkingMonster : MonoBehaviour, IMonster
         monsterObj.AddComponent<BoxCollider2D>();
         _moveDirection = "Left";
         _travelDistance = 3;
+        _targetPos = monsterObj.transform.position.x - _travelDistance;
+    }
+
+    public GameObject MonsterObj
+    {
+        get { return monsterObj; }
     }
 
 	// Use this for initialization
 	void Start () {
-        Move();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    }
 
     public void Move()
     {
-        float targetPos;
         if (_moveDirection == "Right")
-        {
-            targetPos = monsterObj.transform.position.x + _travelDistance;
-
-            if (monsterObj.transform.position.x < targetPos)
+        {       
+            if (monsterObj.transform.position.x < _targetPos)
             {
-                monsterObj.transform.Translate(Vector2.right);
+                monsterObj.transform.position += Vector3.right * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Left";
+                _targetPos = monsterObj.transform.position.x - _travelDistance;
             }
         }
         else
         {
-            targetPos = monsterObj.transform.position.x - _travelDistance;
-            print("Target "+targetPos);
-            if (monsterObj.transform.position.x > targetPos)
+            if (monsterObj.transform.position.x > _targetPos)
             {
-                print("JE BOUGE");
-                monsterObj.transform.Translate(Vector2.left);
+                monsterObj.transform.position += Vector3.left * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Right";
+                _targetPos = monsterObj.transform.position.x + _travelDistance;
             }
         }
     }
@@ -88,5 +93,22 @@ public class WalkingMonster : MonoBehaviour, IMonster
             }
         }
 
+    }
+
+    public void SetSpawnPosition(Vector2 position)
+    {
+        monsterObj.transform.position = position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            _target = other.gameObject;
+            if(GameController._levelState == LevelState.dreaming)
+            {
+                Attack();
+            }
+        }
     }
 }

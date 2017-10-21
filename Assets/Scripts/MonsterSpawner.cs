@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour {
 
-    public List<IMonster> listMonster = new List<IMonster>();
+    private IMonster monster;
     private MonsterFactory mFactory = new MonsterFactory();
+    private float _timer = 0;
 
     private void Start()
     {
-        listMonster.Add(mFactory.SpawnMonster(MonsterType.walking));
+        monster = mFactory.SpawnMonster(MonsterType.walking);
+        monster.SetSpawnPosition(transform.position);
+    }
 
-        listMonster[0].Move();
-        listMonster[0].Attack();
-        listMonster[0].TakeDamage();
+    private void Update()
+    {
+            monster.Move();
+        
     }
 }
 
@@ -44,4 +48,5 @@ public interface IMonster
     void Move();
     void Attack();
     void TakeDamage();
+    void SetSpawnPosition(Vector2 position);
 }

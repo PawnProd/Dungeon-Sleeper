@@ -129,12 +129,14 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(2,2,0);
     }
 
-    public void Attack()
+    public bool Attack()
     {
         if(monster != null)
         {
             monster.GetComponent<WalkingMonster>().TakeDamage();
         }
+
+        return true;
 
     }
 

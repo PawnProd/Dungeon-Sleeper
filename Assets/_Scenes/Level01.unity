@@ -242,6 +242,12 @@ Prefab:
       propertyPath: delaySleeping
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114594875371979098, guid: 89cfe0b4c0c741a4d90e666a237e738d,
+        type: 2}
+      propertyPath: ghostPrefab
+      value: 
+      objectReference: {fileID: 1994379056079366, guid: 7bf4ab3fadedb59448ef03ab889f5917,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89cfe0b4c0c741a4d90e666a237e738d, type: 2}
   m_IsPrefabParent: 0

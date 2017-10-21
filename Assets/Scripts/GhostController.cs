@@ -88,6 +88,9 @@ public class GhostController : MonoBehaviour {
             case "Jump":
                 JumpGhost();
                 break;
+            case "Attack":
+                actionFinish = AttackGhost();
+                break;
         }
         if (actionFinish)
         {
@@ -99,6 +102,14 @@ public class GhostController : MonoBehaviour {
     public void JumpGhost()
     {
         transform.Translate(2, 2, 0);
+    }
+
+
+    public bool AttackGhost()
+    {
+        print("Attack");
+        return true;
+
     }
 
 }

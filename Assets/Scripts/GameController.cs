@@ -103,6 +103,9 @@ public class GameController : MonoBehaviour {
             case "Jump":
                 _player.Jump();
                 break;
+            case "Attack":
+                actionFinish = _player.Attack();
+                break;
         }
         if(actionFinish)
         {

@@ -19,8 +19,6 @@ public class GameController : MonoBehaviour {
 
     private int _nbPlayerAction;
 
-    private float _timer = 0;
-
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +28,7 @@ public class GameController : MonoBehaviour {
         _ghost = Instantiate(ghostPrefab).GetComponent<GhostController>();
         _player = Instantiate(playerPrefab).GetComponent<PlayerController>();
         _player.ghost = _ghost.gameObject;
+        
     }
 	
 	// Update is called once per frame
@@ -38,8 +37,9 @@ public class GameController : MonoBehaviour {
         switch(_levelState) // BOUCLE DE JEU
         {
             case LevelState.running:
-                print(_player.actionsList.Count);
-                cameraPlayer.transform.position = new Vector3(_player.transform.position.x, 0, -1);
+                print("Running");
+                _player.animator.SetBool("isSleep", false);
+                cameraPlayer.transform.position = new Vector3(_player.transform.position.x, 0, -22);
                 if (_player.actionsList.Count != 0 && _nbPlayerAction != 0)
                 {
                     DoPlayerAction();
@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour {
                 {
                     _player.animator.SetBool("isWalking", false);
                     _player.animator.SetBool("isAttack", false);
+                    _player.animator.SetBool("isSleep", true);
                     _nbPlayerAction = GenerateActionToPlayer();
                     RandomPhrase();
                     SetLevelState(LevelState.dreaming);
@@ -55,7 +56,7 @@ public class GameController : MonoBehaviour {
                 break;
             case LevelState.dreaming:
                 print("Dreaming");
-                cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -1);
+                cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -22);
                 StartCoroutine(DelaySleeping());
                 break;
         }
@@ -101,10 +102,12 @@ public class GameController : MonoBehaviour {
             case "Right":
                 actionFinish = _player.MoveRight();
                 _player.animator.SetBool("isWalking", true);
+                _player.transform.localScale = new Vector3(0.25f, 0.25f, 1);
                 break;
             case "Left":
                 actionFinish = _player.MoveLeft();
                 _player.animator.SetBool("isWalking", true);
+                _player.transform.localScale = new Vector3(-0.25f, 0.25f, 1);
                 break;
             case "Jump":
                 actionFinish = _player.Jump();
@@ -117,7 +120,6 @@ public class GameController : MonoBehaviour {
         }
         if(actionFinish)
         {
-            
             _player.actionsList.RemoveAt(0);
             --_nbPlayerAction;
         }

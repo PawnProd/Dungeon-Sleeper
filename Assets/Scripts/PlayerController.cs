@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
     public List<string> actionsList = new List<string>();
     public List<string> tiredList = new List<string>();
 
@@ -130,23 +129,35 @@ public class PlayerController : MonoBehaviour {
     {
         if (!_isMoving)
         {
-            targetPos = transform.position.x + 2;
+            if(_facingDirection == "right")
+            {
+                targetPos = transform.position.x + 2;
+            }
+            else
+            {
+                targetPos = transform.position.x - 2;
+            }
             _isMoving = true;
         }
         print(targetPos);
-        if (transform.position.x < targetPos)
+        if (_facingDirection == "right" && transform.position.x < targetPos)
         {
             transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            _facingDirection = "right";
+            return false;
+        }
+        else if(_facingDirection == "left" && transform.position.x > targetPos)
+        {
+            transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
             return false;
         }
 
-        else
+        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_idle"))
         {
-            _facingDirection = "right";
             _isMoving = false;
             return true;
         }
+
+        return true;
     }
 
     public bool Attack()

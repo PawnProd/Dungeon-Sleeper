@@ -9,11 +9,13 @@ public class GhostController : MonoBehaviour {
     private float _speed = 1;
     private float targetPos;
 
+    private Animator _animator;
+
     private string _facingDirection;
     private bool _isMoving;
     // Use this for initialization
     void Start () {
-		
+        _animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +24,11 @@ public class GhostController : MonoBehaviour {
 		if(actionList.Count != 0)
         {
             DoPlayerAction();
+        }
+
+        if(GameController._levelState == LevelState.running)
+        {
+            _animator.SetBool("isWalking", false);
         }
 	}
 
@@ -80,15 +87,21 @@ public class GhostController : MonoBehaviour {
         switch (actionList[0])
         {
             case "Right":
+                _animator.SetBool("isWalking", true);
+                transform.localScale = new Vector3(0.25f, 0.25f, 1);
                 actionFinish = MoveRightGhost();
                 break;
             case "Left":
+                _animator.SetBool("isWalking", true);
+                transform.localScale = new Vector3(-0.25f, 0.25f, 1);
                 actionFinish = MoveLeftGhost();
                 break;
             case "Jump":
                 actionFinish = JumpGhost();
                 break;
             case "Attack":
+                _animator.SetBool("isWalking", false);
+                _animator.SetBool("isAttack", true);
                 actionFinish = AttackGhost();
                 break;
         }
@@ -103,20 +116,30 @@ public class GhostController : MonoBehaviour {
     {
         if (!_isMoving)
         {
-            targetPos = transform.position.x + 2;
+            if (_facingDirection == "right")
+            {
+                targetPos = transform.position.x + 2;
+            }
+            else
+            {
+                targetPos = transform.position.x - 2;
+            }
             _isMoving = true;
         }
         print(targetPos);
-        if (transform.position.x < targetPos)
+        if (_facingDirection == "right" && transform.position.x < targetPos)
         {
             transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            _facingDirection = "right";
+            return false;
+        }
+        else if (_facingDirection == "left" && transform.position.x > targetPos)
+        {
+            transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
             return false;
         }
 
         else
         {
-            _facingDirection = "right";
             _isMoving = false;
             return true;
         }
@@ -125,9 +148,13 @@ public class GhostController : MonoBehaviour {
 
     public bool AttackGhost()
     {
-        print("Attack");
-        return true;
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Fight"))
+        {
+            _animator.SetBool("isAttack", false);
+            return true;
+        }
 
+        return false;
     }
 
 }

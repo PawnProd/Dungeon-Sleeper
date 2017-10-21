@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject monster;
     public GameObject ghost;
 
+    public Animator animator;
+
     public int attackDmg = 1;
 
     private string _facingDirection;
@@ -27,8 +29,8 @@ public class PlayerController : MonoBehaviour {
 
 
     void Start () {
-
-	}
+        animator = GetComponent<Animator>();
+    }
 	
 
 	void Update () {
@@ -163,7 +165,7 @@ public class PlayerController : MonoBehaviour {
         if (other.collider.tag == "Monster")
         {
             monster = other.gameObject;
-            if (actionsList.Count < 2 && actionsList[1] == "Attack")
+            if (actionsList.Count > 2 && actionsList[1] == "Attack")
             {
                 Attack();
             }

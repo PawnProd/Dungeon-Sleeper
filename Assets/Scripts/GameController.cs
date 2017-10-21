@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour {
         _ghost = Instantiate(ghostPrefab).GetComponent<GhostController>();
         _player = Instantiate(playerPrefab).GetComponent<PlayerController>();
         _player.ghost = _ghost.gameObject;
-
     }
 	
 	// Update is called once per frame
@@ -38,7 +37,6 @@ public class GameController : MonoBehaviour {
         switch(_levelState) // BOUCLE DE JEU
         {
             case LevelState.running:
-                print("Running");
                 print(_player.actionsList.Count);
                 if(_player.actionsList.Count != 0 && _nbPlayerAction != 0)
                 {
@@ -46,6 +44,8 @@ public class GameController : MonoBehaviour {
                 }
                 else
                 {
+                    _player.animator.SetBool("isAttack", false);
+                    _player.animator.SetBool("isWalking", false);
                     _nbPlayerAction = GenerateActionToPlayer();
                     RandomPhrase();
                     SetLevelState(LevelState.dreaming);
@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour {
                 break;
             case LevelState.dreaming:
                 print("Dreaming");
+
                 StartCoroutine(DelaySleeping());
                 break;
         }
@@ -97,19 +98,24 @@ public class GameController : MonoBehaviour {
         {
             case "Right":
                 actionFinish = _player.MoveRight();
+                _player.animator.SetBool("isWalking", true);
                 break;
             case "Left":
                 actionFinish = _player.MoveLeft();
+                _player.animator.SetBool("isWalking", true);
                 break;
             case "Jump":
                 actionFinish = _player.Jump();
                 break;
             case "Attack":
+                _player.animator.SetBool("isAttack", true);
                 actionFinish = _player.Attack();
                 break;
         }
         if(actionFinish)
         {
+          //  _player.animator.SetBool("isWalking", false);
+           // _player.animator.SetBool("isAttack", false);
             _player.actionsList.RemoveAt(0);
             --_nbPlayerAction;
         }

@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour
         MoveDirection();
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "player")
         {

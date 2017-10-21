@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool _isMoving;
 
-    private int _health;
+    private int _health = 1;
 
     private float _speed = 1;
 
@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour {
                 }
                 break;
         }
+
+        if (_health<=0)
+        {
+            Death();
+        }
         
     }
 
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour {
         monster.GetComponent<Monster>().pv -= attackDmg;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Monster")
         {

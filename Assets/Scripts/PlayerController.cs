@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour {
     public void MoveLeft()
     {
         transform.Translate(Vector3.left);
+        facingDirection = "left";
     }
 
     public void Jump()
@@ -74,6 +75,15 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
+        if (facingDirection == "left")
+        {
+
+        }
+
+        else
+        {
+
+        }
         //monster.GetComponent<Monster>().pv -= attackDmg;
     }
 
@@ -89,6 +99,11 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         print("YOU DIED!!");
+    }
+
+    public void SaySomething(string text)
+    {
+        print("I said something!");
     }
                                                   ////////////////////             \\\\\\\\\\\\\\\\\\\
                                         //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

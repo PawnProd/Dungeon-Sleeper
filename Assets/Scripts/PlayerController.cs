@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject monster;
 
+    public int health;
+
 	void Start () {
 
 	}
@@ -20,26 +22,27 @@ public class PlayerController : MonoBehaviour {
         switch (GameController._levelState)
         {
             case LevelState.dreaming:
-                if (Input.GetAxis("Horizontal") > 0 )
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     print("MoveRight");
                     actionsList.Add("Right");
                 }
 
-                if (Input.GetAxis("Horizontal") < 0 )
+                if (Input.GetKeyDown(KeyCode.D))
                 {
                     print("MoveLeft");
                     actionsList.Add("Left");
                 }
 
-                if (Input.GetButton("Jump"))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     print("Jump");
                     actionsList.Add("Jump");
                 }
 
-                if (Input.GetButton("Fire1"))
+                if (Input.GetMouseButtonDown(1))
                 {
+                    print("Attack");
                     Attack();
                 }
                 break;
@@ -64,11 +67,20 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-
+        //monster.GetComponent<Monster>().pv--;
     }
 
     public void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Monster")
+        {
+            monster = other.gameObject;
+            Attack();
+        }
+    }
 
+    public void Death()
+    {
+        
     }
 }

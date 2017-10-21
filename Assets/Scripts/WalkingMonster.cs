@@ -65,7 +65,6 @@ public class WalkingMonster : MonoBehaviour, IMonster
     public void SetupMonster()
     {
         gameObject.tag = "Monster";
-        GetComponent<SpriteRenderer>().sprite = Resources.Load("WalkingMonster/Monster01", typeof(Sprite)) as Sprite;
     }
 
     public void Attack()

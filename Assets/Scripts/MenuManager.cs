@@ -22,6 +22,10 @@ public class MenuManager : MonoBehaviour {
 
         #endif
     }
+    public void Tuto()
+    {
+        SceneManager.LoadScene("temp");
+    }
 }
 
    

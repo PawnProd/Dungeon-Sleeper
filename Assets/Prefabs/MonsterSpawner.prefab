@@ -66,3 +66,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wMonsterPrefab: {fileID: 1118934238129278, guid: 63452626e899ec84facd0633f70a398a,
     type: 2}
+  mMonsterPrefab: {fileID: 1139973277126280, guid: 3742fd6d600974941ae82d283a74fed3,
+    type: 2}
+  allSpritesWalking:
+  - {fileID: 21300000, guid: 70e8d6a4785a83e4ca81b2a8a5a5dfed, type: 3}
+  - {fileID: 21300000, guid: 45d376c8d73571c42b348b8c25f86a96, type: 3}
+  allAnimatorWalking:
+  - {fileID: 9100000, guid: 0141babf2ce2ef246938021ead6638cd, type: 2}
+  - {fileID: 9100000, guid: 15e316d294375f346a08a0953a5c9abe, type: 2}
+  allSpritesMoveable:
+  - {fileID: 21300000, guid: 913ad5fd3976e2049a40ba577859f017, type: 3}
+  allAnimatorMoveable:
+  - {fileID: 9100000, guid: ac2b96058bf3a17409e9f978e9d11523, type: 2}
+  mTypeToSpawn: 0

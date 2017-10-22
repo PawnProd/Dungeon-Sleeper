@@ -22,9 +22,9 @@ public class MenuManager : MonoBehaviour {
 
         #endif
     }
-    public void Tuto()
+    public void Recommencer()
     {
-        SceneManager.LoadScene("temp");
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
 

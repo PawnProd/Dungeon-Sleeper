@@ -1032,7 +1032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1327314584320726
 GameObject:
   m_ObjectHideFlags: 1
@@ -4136,7 +4136,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031788176917562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 46.87959, y: 2.142341, z: -0.234375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7405,7 +7405,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212005915220286392
 SpriteRenderer:
@@ -7449,7 +7449,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212006977958999882
 SpriteRenderer:
@@ -7485,7 +7485,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d378d23a70d60df4fa1cfa011f26fa67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19fecb8d1491f541a911ab3a3004faa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7537,7 +7537,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212015405617013800
 SpriteRenderer:
@@ -7669,7 +7669,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212052460208265390
 SpriteRenderer:
@@ -7801,7 +7801,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212065473514325886
 SpriteRenderer:
@@ -7889,7 +7889,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212071496478309992
 SpriteRenderer:
@@ -7933,7 +7933,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212074343332865728
 SpriteRenderer:
@@ -8065,7 +8065,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212084790123981534
 SpriteRenderer:
@@ -8153,7 +8153,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212092277289205712
 SpriteRenderer:
@@ -8241,7 +8241,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212101213254442308
 SpriteRenderer:
@@ -8285,7 +8285,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212101999668402224
 SpriteRenderer:
@@ -8329,7 +8329,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212129112216899608
 SpriteRenderer:
@@ -8461,7 +8461,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212141682591417716
 SpriteRenderer:
@@ -8505,7 +8505,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212144960884365922
 SpriteRenderer:
@@ -8549,7 +8549,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212158476890976536
 SpriteRenderer:
@@ -8593,7 +8593,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212176630356912518
 SpriteRenderer:
@@ -8637,7 +8637,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212184285384497582
 SpriteRenderer:
@@ -8681,7 +8681,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212188883864550298
 SpriteRenderer:
@@ -8725,7 +8725,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212194004041561582
 SpriteRenderer:
@@ -8813,7 +8813,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212219241626870904
 SpriteRenderer:
@@ -8901,7 +8901,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212226109177582494
 SpriteRenderer:
@@ -8989,7 +8989,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212251282610581070
 SpriteRenderer:
@@ -9033,7 +9033,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212257892336675262
 SpriteRenderer:
@@ -9165,7 +9165,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212276553534399726
 SpriteRenderer:
@@ -9209,7 +9209,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212281831851956446
 SpriteRenderer:
@@ -9253,7 +9253,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212282103181018838
 SpriteRenderer:
@@ -9297,7 +9297,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212292954738655904
 SpriteRenderer:
@@ -9473,7 +9473,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212307527332886778
 SpriteRenderer:
@@ -9517,7 +9517,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212314342344351668
 SpriteRenderer:
@@ -9693,7 +9693,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212342310261413728
 SpriteRenderer:
@@ -9817,7 +9817,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d378d23a70d60df4fa1cfa011f26fa67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19fecb8d1491f541a911ab3a3004faa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9957,7 +9957,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212375869223803300
 SpriteRenderer:
@@ -10001,7 +10001,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212379348786528866
 SpriteRenderer:
@@ -10045,7 +10045,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212399062421575744
 SpriteRenderer:
@@ -10089,7 +10089,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212404402135345824
 SpriteRenderer:
@@ -10133,7 +10133,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212414925365146552
 SpriteRenderer:
@@ -10177,7 +10177,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212439704180781010
 SpriteRenderer:
@@ -10221,7 +10221,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212446346945986498
 SpriteRenderer:
@@ -10265,7 +10265,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212450570518246030
 SpriteRenderer:
@@ -10353,7 +10353,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212461489008754726
 SpriteRenderer:
@@ -10573,7 +10573,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212509171779221106
 SpriteRenderer:
@@ -10661,7 +10661,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212512824094252584
 SpriteRenderer:
@@ -10705,7 +10705,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212515592710169630
 SpriteRenderer:
@@ -10749,7 +10749,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212517048332633808
 SpriteRenderer:
@@ -10925,7 +10925,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212557394912007560
 SpriteRenderer:
@@ -11057,7 +11057,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212567031762491318
 SpriteRenderer:
@@ -11189,7 +11189,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212577170967296236
 SpriteRenderer:
@@ -11233,7 +11233,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212598967690399928
 SpriteRenderer:
@@ -11277,7 +11277,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212599766810854972
 SpriteRenderer:
@@ -11585,7 +11585,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212663954649533952
 SpriteRenderer:
@@ -11673,7 +11673,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212668545393692408
 SpriteRenderer:
@@ -11937,7 +11937,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212710440964028248
 SpriteRenderer:
@@ -11981,7 +11981,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212719298766509882
 SpriteRenderer:
@@ -12017,7 +12017,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d378d23a70d60df4fa1cfa011f26fa67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19fecb8d1491f541a911ab3a3004faa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12289,7 +12289,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212783056668706396
 SpriteRenderer:
@@ -12333,7 +12333,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212785116957528034
 SpriteRenderer:
@@ -12421,7 +12421,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212788741941649478
 SpriteRenderer:
@@ -12553,7 +12553,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212791132702222324
 SpriteRenderer:
@@ -12597,7 +12597,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212791912543879390
 SpriteRenderer:
@@ -12641,7 +12641,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212795419259399374
 SpriteRenderer:
@@ -12685,7 +12685,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212810622273372862
 SpriteRenderer:
@@ -12729,7 +12729,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212811811151323628
 SpriteRenderer:
@@ -12817,7 +12817,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212855411968539534
 SpriteRenderer:
@@ -12861,7 +12861,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212859706441810168
 SpriteRenderer:
@@ -12941,7 +12941,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d378d23a70d60df4fa1cfa011f26fa67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19fecb8d1491f541a911ab3a3004faa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12993,7 +12993,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212878601729853736
 SpriteRenderer:
@@ -13125,7 +13125,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212902259125331070
 SpriteRenderer:
@@ -13257,7 +13257,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212940392483674564
 SpriteRenderer:
@@ -13389,7 +13389,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212953887520808158
 SpriteRenderer:
@@ -13433,7 +13433,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212961262078464816
 SpriteRenderer:
@@ -13477,7 +13477,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212966023723335452
 SpriteRenderer:
@@ -13521,7 +13521,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212971969946004046
 SpriteRenderer:
@@ -13565,7 +13565,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212973926548173146
 SpriteRenderer:
@@ -13653,7 +13653,7 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212999450323183048
 SpriteRenderer:
@@ -13697,5 +13697,5 @@ SpriteRenderer:
   m_Size: {x: 19.29, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

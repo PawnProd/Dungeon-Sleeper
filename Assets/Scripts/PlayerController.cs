@@ -204,19 +204,23 @@ public class PlayerController : MonoBehaviour {
         if (other.collider.tag == "Monster")
         {
             monster = other.gameObject;
-            if (actionsList.Count > 2 && actionsList[1] == "Attack")
+            if (actionsList.Count > 2 && (actionsList[1] == "Attack" || actionsList[0] == "Attack"))
             {
                 Attack();
             }
             else
             {
-                monster.GetComponent<WalkingMonster>().Attack();
+                monster.GetComponent<IMonster>().Attack();
             }
         }
         else if(other.collider.tag == "Ground")
         {
             print("Coucou");
             _isGrounded = true;
+        }
+        else if(other.collider.tag == "Fall")
+        {
+            Death();
         }
     }
 
@@ -237,10 +241,9 @@ public class PlayerController : MonoBehaviour {
     {
         panelBulle.SetActive(true);
         panelBulle.transform.GetChild(1).GetComponent<Text>().text = text;
-        StartCoroutine(DelayShowText());
+       // StartCoroutine(DelayShowText());
     }
 
-    
                                                        ////////////////////             \\\\\\\\\\\\\\\\\\\
                                              //////////////////////////////   GETTERS   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     public int GetHealth()

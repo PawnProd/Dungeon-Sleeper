@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.PostProcessing;
 
 public class GameController : MonoBehaviour {
 
@@ -19,6 +20,10 @@ public class GameController : MonoBehaviour {
     private PlayerController _player;
     private GhostController _ghost;
 
+    private IEnumerator delayCo;
+
+   
+
     private float _timer = 0;
 
 
@@ -35,12 +40,19 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         if(!_player.isDead)
         {
             switch (_levelState) // BOUCLE DE JEU
             {
                 case LevelState.running:
                     print("Running");
+                    StopCoroutine(delayCo);
+                    var setting = cameraPlayer.GetComponent<PostProcessingBehaviour>().profile.vignette.settings;
+                    setting.intensity = 0.471f;
+                    setting.smoothness = 0.147f;
+                    cameraPlayer.GetComponent<PostProcessingBehaviour>().profile.vignette.settings = setting;
                     _player.animator.SetBool("isSleep", false);
                     cameraPlayer.transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, -22);
                     if (_player.actionsList.Count != 0)
@@ -61,9 +73,14 @@ public class GameController : MonoBehaviour {
                 case LevelState.dreaming:
                     print("Dreaming");
                     cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, _ghost.transform.position.y, -22);
-                    if(_player.actionsList.Count != 0)
+                    setting = cameraPlayer.GetComponent<PostProcessingBehaviour>().profile.vignette.settings;
+                    setting.intensity = 0.6f;
+                    setting.smoothness = 0.45f;
+                    cameraPlayer.GetComponent<PostProcessingBehaviour>().profile.vignette.settings = setting;
+                    if (_player.actionsList.Count != 0)
                     {
-                        StartCoroutine(DelaySleeping());
+                        delayCo = DelaySleeping();
+                        StartCoroutine(delayCo);
                     }
                     break;
                 

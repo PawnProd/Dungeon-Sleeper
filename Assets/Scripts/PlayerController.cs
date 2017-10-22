@@ -235,13 +235,22 @@ public class PlayerController : MonoBehaviour {
     {
         yield return new WaitForSeconds(4);
         panelBulle.SetActive(false);
+        GameController._levelState = LevelState.dreaming;
     }
 
     public void SaySomething(string text)
     {
+        if(_facingDirection == "Right")
+        {
+            panelBulle.GetComponent<RectTransform>().localScale = new Vector3(0.009259259f, 0.009259259f, 1);
+        }
+        else
+        {
+            panelBulle.GetComponent<RectTransform>().localScale = new Vector3(-0.009259259f, 0.009259259f, 1);
+        }
         panelBulle.SetActive(true);
         panelBulle.transform.GetChild(1).GetComponent<Text>().text = text;
-       // StartCoroutine(DelayShowText());
+        StartCoroutine(DelayShowText());
     }
 
                                                        ////////////////////             \\\\\\\\\\\\\\\\\\\

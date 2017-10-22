@@ -172,7 +172,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionsList: []
   tiredList:
-  - "On verra \xE7a demain, \xE7a te d\xE9range pas!"
+  - "On verra \xE7a demain, \xE7a te d\xE9range pas ?"
+  - J'aimerais bien...mais dans cinq minutes !
+  - Par devant, je te rejoins dans cinq minutes ?
+  - Oh non.....C'est trop dur !
+  - Petite pause !
+  - 'J''ai plus de forces... '
   monster: {fileID: 0}
   ghost: {fileID: 0}
   panelBulle: {fileID: 0}

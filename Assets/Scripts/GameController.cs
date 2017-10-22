@@ -47,7 +47,6 @@ public class GameController : MonoBehaviour {
             switch (_levelState) // BOUCLE DE JEU
             {
                 case LevelState.running:
-                    print("Running");
                     StopCoroutine(delayCo);
                     var setting = cameraPlayer.GetComponent<PostProcessingBehaviour>().profile.vignette.settings;
                     setting.intensity = 0.471f;
@@ -67,7 +66,6 @@ public class GameController : MonoBehaviour {
                         _player.animator.SetBool("isSleep", true);
                         GenerateActionToPlayer();
                         RandomPhrase();
-                        SetLevelState(LevelState.dreaming);
                     }
                     break;
                 case LevelState.dreaming:

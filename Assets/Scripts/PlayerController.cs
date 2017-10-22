@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
 
     public int attackDmg = 1;
+    public int nbActionMax;
 
     private string _facingDirection;
 
@@ -35,41 +36,51 @@ public class PlayerController : MonoBehaviour {
 	
 
 	void Update () {
-
-        switch (GameController._levelState)
+        if(nbActionMax != 0)
         {
-            case LevelState.dreaming:
+            switch (GameController._levelState)
+            {
+                case LevelState.dreaming:
 
-                ghost.SetActive(true);
+                    ghost.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    print("MoveRight");
-                    actionsList.Add("Right");
-                    ghost.GetComponent<GhostController>().actionList.Add("Right");
-                }
+                    if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        print("MoveRight");
+                        actionsList.Add("Right");
+                        ghost.GetComponent<GhostController>().actionList.Add("Right");
+                        --nbActionMax;
+                    }
 
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    print("MoveLeft");
-                    actionsList.Add("Left");
-                    ghost.GetComponent<GhostController>().actionList.Add("Left");
-                }
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        print("MoveLeft");
+                        actionsList.Add("Left");
+                        ghost.GetComponent<GhostController>().actionList.Add("Left");
+                        --nbActionMax;
+                    }
 
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    print("Jump");
-                    actionsList.Add("Jump");
-                    ghost.GetComponent<GhostController>().actionList.Add("Jump");
-                }
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        print("Jump");
+                        actionsList.Add("Jump");
+                        ghost.GetComponent<GhostController>().actionList.Add("Jump");
+                        --nbActionMax;
+                    }
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    print("Attack");
-                    actionsList.Add("Attack");
-                    ghost.GetComponent<GhostController>().actionList.Add("Attack");
-                }
-                break;
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        print("Attack");
+                        actionsList.Add("Attack");
+                        ghost.GetComponent<GhostController>().actionList.Add("Attack");
+                        --nbActionMax;
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            GameController._levelState = LevelState.running;
         }
 
         if (_health<=0)
@@ -82,61 +93,53 @@ public class PlayerController : MonoBehaviour {
     public bool MoveRight()
     {
         _delay += Time.deltaTime;
-        if (_delay >= 1)
+        if (!_isMoving)
         {
-            if (!_isMoving)
-            {
-                targetPos = transform.position.x + 1;
-                _isMoving = true;
-            }
-
-            if (_delay < 3 && transform.position.x < targetPos)
-            {
-                transform.Translate(Vector3.right * _speed * Time.deltaTime);
-                _facingDirection = "right";
-                return false;
-            }
-
-            else
-            {
-                _facingDirection = "right";
-                _isMoving = false;
-                return true;
-            }
-            
+            targetPos = transform.position.x + 1;
+            _isMoving = true;
         }
 
-        return false;
+        if (_delay < 8 && transform.position.x < targetPos)
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            _facingDirection = "right";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "right";
+            _isMoving = false;
+            _delay = 0;
+            return true;
+        }
+            
 
     }
 
     public bool MoveLeft()
     {
         _delay += Time.deltaTime;
-        if (_delay >= 1)
+        if (!_isMoving)
         {
-            if (!_isMoving)
-            {
-                targetPos = transform.position.x - 1;
-                _isMoving = true;
-            }
-
-            if (_delay < 3 && transform.position.x > targetPos)
-            {
-                transform.Translate(Vector3.left * _speed * Time.deltaTime);
-                _facingDirection = "left";
-                return false;
-            }
-
-            else
-            {
-                _facingDirection = "left";
-                _isMoving = false;
-                return true;
-            }
+            targetPos = transform.position.x - 1;
+            _isMoving = true;
         }
-        return false;
 
+        if (_delay < 8 && transform.position.x > targetPos)
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            _facingDirection = "left";
+            return false;
+        }
+
+        else
+        {
+            _facingDirection = "left";
+            _isMoving = false;
+            _delay = 0;
+            return true;
+        }
     }
 
     public bool Jump()

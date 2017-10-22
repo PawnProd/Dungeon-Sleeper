@@ -19,19 +19,17 @@ public class GameController : MonoBehaviour {
     private PlayerController _player;
     private GhostController _ghost;
 
-    private int _nbPlayerAction;
     private float _timer = 0;
 
 
 	// Use this for initialization
 	void Start () {
-
-        SetupGame();
         _levelState = LevelState.dreaming;
         _ghost = Instantiate(ghostPrefab).GetComponent<GhostController>();
         _player = Instantiate(playerPrefab).GetComponent<PlayerController>();
         _player.ghost = _ghost.gameObject;
-        
+        SetupGame();
+
     }
 	
 	// Update is called once per frame
@@ -44,7 +42,7 @@ public class GameController : MonoBehaviour {
                     print("Running");
                     _player.animator.SetBool("isSleep", false);
                     cameraPlayer.transform.position = new Vector3(_player.transform.position.x, -3, -22);
-                    if (_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+                    if (_player.actionsList.Count != 0)
                     {
                         DoPlayerAction();
                     }
@@ -53,7 +51,7 @@ public class GameController : MonoBehaviour {
                         _player.animator.SetBool("isWalking", false);
                         _player.animator.SetBool("isAttack", false);
                         _player.animator.SetBool("isSleep", true);
-                        _nbPlayerAction = GenerateActionToPlayer();
+                        GenerateActionToPlayer();
                         RandomPhrase();
                         SetLevelState(LevelState.dreaming);
                     }
@@ -80,9 +78,9 @@ public class GameController : MonoBehaviour {
     }
 
     // Génère le nombre d'action donné au player
-    public int GenerateActionToPlayer()
+    public void GenerateActionToPlayer()
     {
-        return Random.Range(randomNbActionMin, randomNbActionMax);
+        _player.nbActionMax =  Random.Range(randomNbActionMin, randomNbActionMax);
     }
 
     // Change l'état du level 
@@ -94,7 +92,7 @@ public class GameController : MonoBehaviour {
     // Setup les différents paramètre de la partie
     public void SetupGame()
     {
-        _nbPlayerAction = GenerateActionToPlayer();
+        GenerateActionToPlayer();
     }
 
     public void RandomPhrase()
@@ -138,7 +136,6 @@ public class GameController : MonoBehaviour {
         if(actionFinish)
         {
             _player.actionsList.RemoveAt(0);
-            --_nbPlayerAction;
         }
 
     }

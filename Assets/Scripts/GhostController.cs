@@ -31,11 +31,6 @@ public class GhostController : MonoBehaviour {
         {
             _animator.SetBool("isWalking", false);
         }
-
-        if(GameController._levelState == LevelState.running)
-        {
-            _animator.SetBool("isWalking", false);
-        }
 	}
 
     public bool MoveRightGhost()

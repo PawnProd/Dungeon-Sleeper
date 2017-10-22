@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
                     {
                         _player.animator.SetBool("isWalking", false);
                         _player.animator.SetBool("isAttack", false);
-                        _player.animator.SetBool("isJump", false);
+                        _player.animator.SetBool("isJumping", false);
                         _player.animator.SetBool("isSleep", true);
                         GenerateActionToPlayer();
                         RandomPhrase();
@@ -64,7 +64,10 @@ public class GameController : MonoBehaviour {
                     print("Dreaming");
                     panelGhost.SetActive(true);
                     cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, _ghost.transform.position.y, -22);
-                    StartCoroutine(DelaySleeping());
+                    if(_player.actionsList.Count != 0)
+                    {
+                        StartCoroutine(DelaySleeping());
+                    }
                     break;
                 
             }

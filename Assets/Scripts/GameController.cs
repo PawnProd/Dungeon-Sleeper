@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class GameController : MonoBehaviour {
     public GameObject playerPrefab;
     public GameObject ghostPrefab;
     public GameObject cameraPlayer;
+    public GameObject panelGameOver;
 
     public static LevelState _levelState;
 
@@ -34,33 +36,40 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        switch(_levelState) // BOUCLE DE JEU
+        if(!_player.isDead)
         {
-            case LevelState.running:
-                print("Running");
-                _player.animator.SetBool("isSleep", false);
-                cameraPlayer.transform.position = new Vector3(_player.transform.position.x, 0, -22);
-                if (_player.actionsList.Count != 0 && _nbPlayerAction != 0)
-                {
-                    DoPlayerAction();
-                }
-                else
-                {
-                    _player.animator.SetBool("isWalking", false);
-                    _player.animator.SetBool("isAttack", false);
-                    _player.animator.SetBool("isSleep", true);
-                    _nbPlayerAction = GenerateActionToPlayer();
-                    RandomPhrase();
-                    SetLevelState(LevelState.dreaming);
-                }
-                break;
-            case LevelState.dreaming:
-                print("Dreaming");
-                cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, 0, -22);
-                StartCoroutine(DelaySleeping());
-                break;
+            switch (_levelState) // BOUCLE DE JEU
+            {
+                case LevelState.running:
+                    print("Running");
+                    _player.animator.SetBool("isSleep", false);
+                    cameraPlayer.transform.position = new Vector3(_player.transform.position.x, -3, -22);
+                    if (_player.actionsList.Count != 0 && _nbPlayerAction != 0)
+                    {
+                        DoPlayerAction();
+                    }
+                    else
+                    {
+                        _player.animator.SetBool("isWalking", false);
+                        _player.animator.SetBool("isAttack", false);
+                        _player.animator.SetBool("isSleep", true);
+                        _nbPlayerAction = GenerateActionToPlayer();
+                        RandomPhrase();
+                        SetLevelState(LevelState.dreaming);
+                    }
+                    break;
+                case LevelState.dreaming:
+                    print("Dreaming");
+                    cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, -3, -22);
+                    StartCoroutine(DelaySleeping());
+                    break;
+            }
         }
+        else
+        {
+            panelGameOver.SetActive(true);
+        }
+       
 	}
     
     // Le temps de sommeil
@@ -92,6 +101,11 @@ public class GameController : MonoBehaviour {
     {
         string phrase = _player.tiredList[Random.Range(0, _player.tiredList.Count - 1)];
         _player.SaySomething(phrase);
+    }
+
+    public void ReplaceScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     // Effectue la liste d'action des players
@@ -128,6 +142,7 @@ public class GameController : MonoBehaviour {
         }
 
     }
+
 
 }
 

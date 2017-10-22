@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public List<string> actionsList = new List<string>();
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject monster;
     public GameObject ghost;
+    public GameObject panelBulle;
 
     public Animator animator;
 
@@ -15,21 +17,20 @@ public class PlayerController : MonoBehaviour {
 
     private string _facingDirection;
 
-    public GameController gameController;
-
     public bool isDead = false;
 
     private bool _isMoving;
 
     private int _health = 1;
 
-    private float _speed = 1;
+    private float _speed = 2;
     private float targetPos;
     private float _delay = 0;
 
 
     void Start () {
         animator = GetComponent<Animator>();
+        panelBulle = transform.GetChild(0).gameObject;
     }
 	
 
@@ -129,8 +130,7 @@ public class PlayerController : MonoBehaviour {
     public bool Jump()
     {
         _delay += Time.deltaTime;
-        print(_delay);
-        if (_delay >= 2)
+        if (_delay >= 1)
         {
             animator.SetBool("isJumping", false);
             if (!_isMoving)
@@ -148,12 +148,12 @@ public class PlayerController : MonoBehaviour {
             print(targetPos);
             if (_facingDirection == "right" && transform.position.x < targetPos)
             {
-                transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
+                transform.Translate(1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
                 return false;
             }
             else if (_facingDirection == "left" && transform.position.x > targetPos)
             {
-                transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
+                transform.Translate(-1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
                 return false;
             }
 
@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour {
         }
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Finish_Fight"))
         {
+            animator.SetBool("isAttack", false);
             return true;
         }
 
@@ -206,9 +207,17 @@ public class PlayerController : MonoBehaviour {
         isDead = true;
     }
 
+    IEnumerator DelayShowText()
+    {
+        yield return new WaitForSeconds(4);
+        panelBulle.SetActive(false);
+    }
+
     public void SaySomething(string text)
     {
-        print(text);
+        panelBulle.SetActive(true);
+        panelBulle.transform.GetChild(1).GetComponent<Text>().text = text;
+        StartCoroutine(DelayShowText());
     }
 
     

@@ -6,13 +6,14 @@ public class GhostController : MonoBehaviour {
 
     public List<string> actionList = new List<string>();
 
-    private float _speed = 1;
+    private float _speed = 2;
     private float targetPos;
 
     private Animator _animator;
 
     private string _facingDirection;
     private bool _isMoving;
+    private float _delay;
     // Use this for initialization
     void Start () {
         _animator = GetComponent<Animator>();
@@ -24,6 +25,10 @@ public class GhostController : MonoBehaviour {
 		if(actionList.Count != 0)
         {
             DoPlayerAction();
+        }
+        else
+        {
+            _animator.SetBool("isWalking", false);
         }
 
         if(GameController._levelState == LevelState.running)
@@ -97,6 +102,7 @@ public class GhostController : MonoBehaviour {
                 actionFinish = MoveLeftGhost();
                 break;
             case "Jump":
+                _animator.SetBool("isJumping", true);
                 actionFinish = JumpGhost();
                 break;
             case "Attack":
@@ -114,35 +120,43 @@ public class GhostController : MonoBehaviour {
 
     public bool JumpGhost()
     {
-        if (!_isMoving)
+        _delay += Time.deltaTime;
+        if (_delay >= 1)
         {
-            if (_facingDirection == "right")
+            _animator.SetBool("isJumping", false);
+            if (!_isMoving)
             {
-                targetPos = transform.position.x + 2;
+                if (_facingDirection == "right")
+                {
+                    targetPos = transform.position.x + 2;
+                }
+                else
+                {
+                    targetPos = transform.position.x - 2;
+                }
+                _isMoving = true;
             }
-            else
+            print(targetPos);
+            if (_facingDirection == "right" && transform.position.x < targetPos)
             {
-                targetPos = transform.position.x - 2;
+                transform.Translate(1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                return false;
             }
-            _isMoving = true;
-        }
-        print(targetPos);
-        if (_facingDirection == "right" && transform.position.x < targetPos)
-        {
-            transform.Translate(2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            return false;
-        }
-        else if (_facingDirection == "left" && transform.position.x > targetPos)
-        {
-            transform.Translate(-2 * _speed * Time.deltaTime, 8 * _speed * Time.deltaTime, 0);
-            return false;
+            else if (_facingDirection == "left" && transform.position.x > targetPos)
+            {
+                transform.Translate(-1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                return false;
+            }
+
+            else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle"))
+            {
+                _isMoving = false;
+                _delay = 0;
+                return true;
+            }
         }
 
-        else
-        {
-            _isMoving = false;
-            return true;
-        }
+        return false;
     }
 
 

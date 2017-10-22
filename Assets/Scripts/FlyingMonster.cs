@@ -2,85 +2,110 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingMonster : MonoBehaviour, IMonster {
+public class MoveableMonster : MonoBehaviour, IMonster {
 
-    public GameObject monsterObj;
+
     public int life;
     public int attackDmg;
     public MonsterType type;
 
     private string _moveDirection;
+
     private float _travelDistance;
+    private float _targetPos;
+    private float _speed = 1f;
+
     private GameObject _target;
 
-    public FlyingMonster()
-    {
-        life = 1;
-        attackDmg = 1;
-        type = MonsterType.flying;
-        monsterObj = new GameObject("FlyingMonster", typeof(SpriteRenderer));
-    }
 
     // Use this for initialization
     void Start()
     {
-
+        life = 1;
+        attackDmg = 1;
+        type = MonsterType.moveable;
+        SetupMonster();
+        _moveDirection = "Left";
+        _travelDistance = 3;
+        _targetPos = transform.position.x - _travelDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        // Move();
     }
 
     public void Move()
     {
-        float targetPos;
         if (_moveDirection == "Right")
         {
-            targetPos = transform.position.x + _travelDistance;
-
-            if (transform.position.x < targetPos)
+            if (transform.position.x < _targetPos)
             {
-                transform.Translate(Vector2.right);
+                transform.position += Vector3.right * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Left";
+                _targetPos = transform.position.x - _travelDistance;
             }
         }
         else
         {
-            targetPos = transform.position.x - _travelDistance;
-
-            if (transform.position.x > targetPos)
+            if (transform.position.x > _targetPos)
             {
-                transform.Translate(Vector2.left);
+                transform.position += Vector3.left * _speed * Time.deltaTime;
             }
             else
             {
                 _moveDirection = "Right";
+                _targetPos = transform.position.x + _travelDistance;
             }
         }
     }
 
+    public void SetupMonster()
+    {
+        gameObject.tag = "Monster";
+    }
+
     public void Attack()
     {
-        _target.GetComponent<PlayerController>().SetHealth(attackDmg);
+        if (_target != null)
+        {
+            _target.GetComponent<PlayerController>().SetHealth(attackDmg);
+        }
     }
 
     public void TakeDamage()
     {
-        life -= _target.GetComponent<PlayerController>().attackDmg;
-        if (life <= 0)
+        if (_target != null)
         {
-            Destroy(monsterObj);
-            Destroy(this);
+            life -= _target.GetComponent<PlayerController>().attackDmg;
+            print("LA VIE " + life);
+            if (life <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
+
     }
 
     public void SetSpawnPosition(Vector2 position)
     {
-        monsterObj.transform.position = position;
+        transform.position = position;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.tag == "Player")
+        {
+            _target = other.gameObject;
+            if (GameController._levelState == LevelState.dreaming)
+            {
+                Attack();
+            }
+        }
     }
 }

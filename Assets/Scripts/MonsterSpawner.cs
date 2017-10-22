@@ -36,7 +36,8 @@ public class MonsterSpawner : MonoBehaviour {
 public enum MonsterType
 {
     flying,
-    walking
+    walking,
+    moveable
 }
 
 public interface IMonster

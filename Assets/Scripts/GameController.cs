@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
     public GameObject ghostPrefab;
     public GameObject cameraPlayer;
     public GameObject panelGameOver;
-    public GameObject panelGhost;
 
     public static LevelState _levelState;
 
@@ -42,7 +41,6 @@ public class GameController : MonoBehaviour {
             {
                 case LevelState.running:
                     print("Running");
-                    panelGhost.SetActive(false);
                     _player.animator.SetBool("isSleep", false);
                     cameraPlayer.transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, -22);
                     if (_player.actionsList.Count != 0)
@@ -62,7 +60,6 @@ public class GameController : MonoBehaviour {
                     break;
                 case LevelState.dreaming:
                     print("Dreaming");
-                    panelGhost.SetActive(true);
                     cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, _ghost.transform.position.y, -22);
                     if(_player.actionsList.Count != 0)
                     {

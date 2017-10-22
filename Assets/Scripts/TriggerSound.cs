@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class TriggerSound : MonoBehaviour {
 
     public AudioClip clip;
     public AudioSource source;
+    public PostProcessingProfile profile;
+    public GameObject camera;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +26,7 @@ public class TriggerSound : MonoBehaviour {
         {
             source.clip = clip;
             source.Play();
+            camera.GetComponent<PostProcessingBehaviour>().profile = profile;
         }
     }
 }

@@ -13,7 +13,7 @@ public class MoveableMonster : MonoBehaviour, IMonster {
 
     private float _travelDistance;
     private float _targetPos;
-    private float _speed = 1f;
+    private float _speed = 0.5f;
 
     private GameObject _target;
 
@@ -34,7 +34,7 @@ public class MoveableMonster : MonoBehaviour, IMonster {
     void Update()
     {
 
-        // Move();
+        Move();
     }
 
     public void Move()

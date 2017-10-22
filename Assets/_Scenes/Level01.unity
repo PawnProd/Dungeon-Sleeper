@@ -1310,6 +1310,26 @@ Prefab:
       propertyPath: allAnimator.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allSpritesWalking.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allSpritesMoveable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allAnimatorWalking.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allAnimatorMoveable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4387412641298830, guid: 35b7e650fb2105142a1921fc0837ad07, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.49
@@ -1383,6 +1403,45 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: mMonsterPrefab
+      value: 
+      objectReference: {fileID: 1139973277126280, guid: 3742fd6d600974941ae82d283a74fed3,
+        type: 2}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allSpritesWalking.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6fb8bc9fc76e3be44bdf711d5d702c31,
+        type: 3}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allSpritesWalking.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 45d376c8d73571c42b348b8c25f86a96,
+        type: 3}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allSpritesMoveable.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 913ad5fd3976e2049a40ba577859f017,
+        type: 3}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allAnimatorWalking.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: 0141babf2ce2ef246938021ead6638cd, type: 2}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allAnimatorWalking.Array.data[1]
+      value: 
+      objectReference: {fileID: 9100000, guid: 15e316d294375f346a08a0953a5c9abe, type: 2}
+    - target: {fileID: 114711663931445284, guid: 35b7e650fb2105142a1921fc0837ad07,
+        type: 2}
+      propertyPath: allAnimatorMoveable.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: ac2b96058bf3a17409e9f978e9d11523, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35b7e650fb2105142a1921fc0837ad07, type: 2}
   m_IsPrefabParent: 0

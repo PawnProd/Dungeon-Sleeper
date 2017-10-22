@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour {
                     {
                         DoPlayerAction();
                     }
-                    else
+                    else if(!_player.panelBulle.activeSelf)
                     {
                         _player.animator.SetBool("isWalking", false);
                         _player.animator.SetBool("isAttack", false);

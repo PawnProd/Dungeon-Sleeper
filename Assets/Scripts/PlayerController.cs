@@ -81,49 +81,61 @@ public class PlayerController : MonoBehaviour {
 
     public bool MoveRight()
     {
-        if (!_isMoving)
+        _delay += Time.deltaTime;
+        if (_delay >= 1)
         {
-            targetPos = transform.position.x + 1;
-            _isMoving = true;
+            if (!_isMoving)
+            {
+                targetPos = transform.position.x + 1;
+                _isMoving = true;
+            }
+
+            if (_delay < 3 && transform.position.x < targetPos)
+            {
+                transform.Translate(Vector3.right * _speed * Time.deltaTime);
+                _facingDirection = "right";
+                return false;
+            }
+
+            else
+            {
+                _facingDirection = "right";
+                _isMoving = false;
+                return true;
+            }
+            
         }
 
-        if (transform.position.x < targetPos)
-        {
-            transform.Translate(Vector3.right * _speed * Time.deltaTime);
-            _facingDirection = "right";
-            return false;
-        }
-
-        else
-        {
-            _facingDirection = "right";
-            _isMoving = false;
-            return true;
-        }
+        return false;
 
     }
 
     public bool MoveLeft()
     {
-        if (!_isMoving)
+        _delay += Time.deltaTime;
+        if (_delay >= 1)
         {
-            targetPos = transform.position.x - 1;
-            _isMoving = true;
-        }
+            if (!_isMoving)
+            {
+                targetPos = transform.position.x - 1;
+                _isMoving = true;
+            }
 
-        if (transform.position.x > targetPos)
-        {
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
-            _facingDirection = "left";
-            return false;
-        }
+            if (_delay < 3 && transform.position.x > targetPos)
+            {
+                transform.Translate(Vector3.left * _speed * Time.deltaTime);
+                _facingDirection = "left";
+                return false;
+            }
 
-        else
-        {
-            _facingDirection = "left";
-            _isMoving = false;
-            return true;
+            else
+            {
+                _facingDirection = "left";
+                _isMoving = false;
+                return true;
+            }
         }
+        return false;
 
     }
 
@@ -146,18 +158,18 @@ public class PlayerController : MonoBehaviour {
                 _isMoving = true;
             }
             print(targetPos);
-            if (_facingDirection == "right" && transform.position.x < targetPos)
+            if (_delay < 3 &&_facingDirection == "right" && transform.position.x < targetPos)
             {
-                transform.Translate(1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                transform.Translate(1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
-            else if (_facingDirection == "left" && transform.position.x > targetPos)
+            else if (_delay < 3 && _facingDirection == "left" && transform.position.x > targetPos)
             {
-                transform.Translate(-1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                transform.Translate(-1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
 
-            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle"))
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle") || _delay >= 3)
             {
                 _isMoving = false;
                 _delay = 0;

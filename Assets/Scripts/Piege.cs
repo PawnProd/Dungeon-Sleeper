@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour {
+public class Piege : MonoBehaviour {
     public GameObject player;
-
+    public int dmgToPlayer;
     // Use this for initialization
     void Start () {
 		
@@ -20,8 +20,7 @@ public class Trap : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             player = other.gameObject;
-            player.GetComponent<PlayerController>().SetHealth(1);
-            print("it's a trap !");
+            player.GetComponent<PlayerController>().SetHealth(dmgToPlayer);
         }
     }
 }

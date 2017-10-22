@@ -102,6 +102,7 @@ public class GhostController : MonoBehaviour {
                 actionFinish = MoveLeftGhost();
                 break;
             case "Jump":
+                _animator.SetBool("isWalking", false);
                 _animator.SetBool("isJumping", true);
                 actionFinish = JumpGhost();
                 break;
@@ -137,18 +138,18 @@ public class GhostController : MonoBehaviour {
                 _isMoving = true;
             }
             print(targetPos);
-            if (_facingDirection == "right" && transform.position.x < targetPos)
+            if (_delay < 5 &&_facingDirection == "right" && transform.position.x < targetPos)
             {
-                transform.Translate(1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                transform.Translate(1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
-            else if (_facingDirection == "left" && transform.position.x > targetPos)
+            else if (_delay < 5 && _facingDirection == "left" && transform.position.x > targetPos)
             {
-                transform.Translate(-1 * _speed * Time.deltaTime, 4 * _speed * Time.deltaTime, 0);
+                transform.Translate(-1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
 
-            else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle"))
+            else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle") || _delay >= 5)
             {
                 _isMoving = false;
                 _delay = 0;
@@ -162,7 +163,7 @@ public class GhostController : MonoBehaviour {
 
     public bool AttackGhost()
     {
-        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Fight"))
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Finish_Fight"))
         {
             _animator.SetBool("isAttack", false);
             return true;

@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
     private float _delay = 0;
 
 
-    void Start () {
+    void Awake () {
         animator = GetComponent<Animator>();
         panelBulle = transform.GetChild(0).gameObject;
     }
@@ -74,6 +74,10 @@ public class PlayerController : MonoBehaviour {
                         actionsList.Add("Attack");
                         ghost.GetComponent<GhostController>().actionList.Add("Attack");
                         --nbActionMax;
+                    }
+                    if(Input.GetKeyDown(KeyCode.E))
+                    {
+                        GameController._levelState = LevelState.running;
                     }
                     break;
             }

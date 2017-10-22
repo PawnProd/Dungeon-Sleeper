@@ -44,15 +44,16 @@ public class GameController : MonoBehaviour {
                     print("Running");
                     panelGhost.SetActive(false);
                     _player.animator.SetBool("isSleep", false);
-                    cameraPlayer.transform.position = new Vector3(_player.transform.position.x, -3, -22);
+                    cameraPlayer.transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, -22);
                     if (_player.actionsList.Count != 0)
                     {
                         DoPlayerAction();
                     }
-                    else if(!_player.panelBulle.activeSelf)
+                    else
                     {
                         _player.animator.SetBool("isWalking", false);
                         _player.animator.SetBool("isAttack", false);
+                        _player.animator.SetBool("isJump", false);
                         _player.animator.SetBool("isSleep", true);
                         GenerateActionToPlayer();
                         RandomPhrase();
@@ -62,9 +63,10 @@ public class GameController : MonoBehaviour {
                 case LevelState.dreaming:
                     print("Dreaming");
                     panelGhost.SetActive(true);
-                    cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, -3, -22);
+                    cameraPlayer.transform.position = new Vector3(_ghost.transform.position.x, _ghost.transform.position.y, -22);
                     StartCoroutine(DelaySleeping());
                     break;
+                
             }
         }
         else
@@ -150,5 +152,5 @@ public class GameController : MonoBehaviour {
 public enum LevelState
 {
     running,
-    dreaming
+    dreaming,
 }

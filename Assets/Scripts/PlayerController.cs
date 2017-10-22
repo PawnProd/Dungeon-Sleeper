@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     public bool isDead = false;
 
     private bool _isMoving;
+    private bool _isGrounded;
 
     private int _health = 1;
 
@@ -151,33 +152,28 @@ public class PlayerController : MonoBehaviour {
         _delay += Time.deltaTime;
         if (_delay >= 1)
         {
-            animator.SetBool("isJumping", false);
-            if (!_isMoving)
+            if(!_isMoving)
             {
-                if (_facingDirection == "right")
-                {
-                    targetPos = transform.position.x + 2;
-                }
-                else
-                {
-                    targetPos = transform.position.x - 2;
-                }
+                _isGrounded = false;
                 _isMoving = true;
             }
-            print(targetPos);
-            if (_delay < 3 &&_facingDirection == "right" && transform.position.x < targetPos)
+            
+            animator.SetBool("isJumping", false);
+            print(_isGrounded);
+            if (_facingDirection == "right" && !_isGrounded)
             {
                 transform.Translate(1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
-            else if (_delay < 3 && _facingDirection == "left" && transform.position.x > targetPos)
+            else if (_facingDirection == "left" && !_isGrounded)
             {
                 transform.Translate(-1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
 
-            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle") || _delay >= 3)
+            else
             {
+                //animator.SetBool("isJump", false);
                 _isMoving = false;
                 _delay = 0;
                 return true;
@@ -216,6 +212,11 @@ public class PlayerController : MonoBehaviour {
             {
                 monster.GetComponent<WalkingMonster>().Attack();
             }
+        }
+        else if(other.collider.tag == "Ground")
+        {
+            print("Coucou");
+            _isGrounded = true;
         }
     }
 

@@ -13,6 +13,7 @@ public class GhostController : MonoBehaviour {
 
     private string _facingDirection;
     private bool _isMoving;
+    private bool _isGrounded;
     private float _delay;
     // Use this for initialization
     void Start () {
@@ -127,29 +128,22 @@ public class GhostController : MonoBehaviour {
             _animator.SetBool("isJumping", false);
             if (!_isMoving)
             {
-                if (_facingDirection == "right")
-                {
-                    targetPos = transform.position.x + 2;
-                }
-                else
-                {
-                    targetPos = transform.position.x - 2;
-                }
+                _isGrounded = false;
                 _isMoving = true;
             }
             print(targetPos);
-            if (_delay < 5 &&_facingDirection == "right" && transform.position.x < targetPos)
+            if (_delay < 5 &&_facingDirection == "right" && !_isGrounded)
             {
                 transform.Translate(1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
-            else if (_delay < 5 && _facingDirection == "left" && transform.position.x > targetPos)
+            else if (_delay < 5 && _facingDirection == "left" && !_isGrounded)
             {
                 transform.Translate(-1 * _speed * Time.deltaTime, 3.5f * _speed * Time.deltaTime, 0);
                 return false;
             }
 
-            else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Personnage_Idle") || _delay >= 5)
+            else
             {
                 _isMoving = false;
                 _delay = 0;
@@ -171,5 +165,15 @@ public class GhostController : MonoBehaviour {
 
         return false;
     }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.tag == "Ground")
+        {
+            print("Coucou");
+            _isGrounded = true;
+        }
+    }
+
 
 }

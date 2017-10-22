@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8524633080f44d345b56805c2a414063
+timeCreated: 1508654174
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: UnifrakturCook
+  fontNames:
+  - UnifrakturCook
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

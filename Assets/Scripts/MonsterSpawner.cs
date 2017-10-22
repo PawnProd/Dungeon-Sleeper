@@ -7,11 +7,8 @@ public class MonsterSpawner : MonoBehaviour {
     public GameObject wMonsterPrefab;
     public GameObject mMonsterPrefab;
 
-    public List<Sprite> allSpritesWalking;
-    public List<RuntimeAnimatorController> allAnimatorWalking;
-
-    public List<Sprite> allSpritesMoveable;
-    public List<RuntimeAnimatorController> allAnimatorMoveable;
+    public List<GameObject> allWalkingMonsterPrefab;
+    public List<GameObject> allMoveableMonsterPrefab;
 
     public MonsterType mTypeToSpawn;
 
@@ -32,16 +29,10 @@ public class MonsterSpawner : MonoBehaviour {
         switch(mType)
         {
             case MonsterType.walking:
-                monster = Instantiate(wMonsterPrefab, transform.position, Quaternion.identity, transform);
-                int numMonster = Random.Range(0, allSpritesWalking.Count);
-                monster.GetComponent<SpriteRenderer>().sprite = allSpritesWalking[numMonster];
-                monster.GetComponent<Animator>().runtimeAnimatorController = allAnimatorWalking[numMonster];
+                monster = Instantiate(allWalkingMonsterPrefab[Random.Range(0, allWalkingMonsterPrefab.Count)], transform.position, Quaternion.identity, transform);
                 break;
             case MonsterType.moveable:
-                monster = Instantiate(mMonsterPrefab, transform.position, Quaternion.identity, transform);
-                int numMonster2 = Random.Range(0, allSpritesMoveable.Count);
-                monster.GetComponent<SpriteRenderer>().sprite = allSpritesMoveable[numMonster2];
-                monster.GetComponent<Animator>().runtimeAnimatorController = allAnimatorMoveable[numMonster2];
+                monster = Instantiate(allMoveableMonsterPrefab[Random.Range(0, allWalkingMonsterPrefab.Count)], transform.position, Quaternion.identity, transform);
                 break;
         }
     }
